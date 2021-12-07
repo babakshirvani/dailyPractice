@@ -20,7 +20,26 @@ driver.get('https://www.python.org')
 # documentation_link = driver.find_element(By.CLASS_NAME, "documentation-widget a")
 # print(documentation_link.text)
 
-bug_link = driver.find_element(By.XPATH, '//*[@id="site-map"]/div[2]/div/ul/li[3]/a')
-print(bug_link.text)
+# bug_link = driver.find_element(By.XPATH, '//*[@id="site-map"]/div[2]/div/ul/li[3]/a')
+# print(bug_link.text)
+
+
+event_times = driver.find_elements(By.CLASS_NAME, "event-widget time")
+# for time in event_times:
+#     print(time.text)
+
+event_names = driver.find_elements(By.CLASS_NAME, "event-widget li a")
+# for name in event_names:
+#     print(name.text)
+
+events = {}
+
+for n in range(len(event_times)):
+    events[n] = {
+        "time": event_times[n].text,
+        "name": event_names[n].text
+    }
+
+print(events)
 
 driver.quit()
